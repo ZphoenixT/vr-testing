@@ -35,7 +35,7 @@ function Scene() {
         <Ball key={i} position={[1.5, 1.1 + 0.1 * i, -0.5]} />
       ))}
 
-        {[...Array(1)].map((_, i) => (
+        {[...Array(5)].map((_, i) => (
         <CylinderObject key={i} position={[2.5, 1.1 + 0.1 * i, -0.5]} />
       ))}
 
