@@ -1,12 +1,13 @@
 import Scene from "./Components/Scene";
 import { createRoot } from 'react-dom/client'
 import React, { useState, useEffect, Fragment, useRef } from 'react'
-import { VRCanvas, Hands, VRButton, XR, useController} from '@react-three/xr'
+import { Hands, VRButton, XR, Controllers} from '@react-three/xr'
 import { Canvas } from '@react-three/fiber'
 import { Physics } from '@react-three/cannon'
 import ControllerModel from "./Components/ControllerModel";
 
 function App() {
+ 
 
   return (
     <>
@@ -20,9 +21,8 @@ function App() {
           friction: 0.09
           }}>
           <Scene />
+          <Controllers />
         </Physics>
-        <ControllerModel hand="left" />
-        <ControllerModel hand="right" />
       </XR>
     </Canvas>
   </>
