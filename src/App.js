@@ -19,6 +19,7 @@ function App() {
           friction: 0.09
           }}>
           <Scene />
+          <Hands />
         </Physics>
       </XR>
     </Canvas>
