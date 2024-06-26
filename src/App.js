@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Scene from "./Components/Scene";
+import { createRoot } from 'react-dom/client'
+import React, { useState, useEffect, Fragment } from 'react'
+import { VRCanvas, Hands, VRButton, XR } from '@react-three/xr'
+import { useThree, useFrame, Canvas } from '@react-three/fiber'
+import { Box, OrbitControls, Plane, Sphere, Sky, useMatcapTexture } from '@react-three/drei'
+import { usePlane, useBox, Physics, useSphere } from '@react-three/cannon'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <VRButton />
+    <Canvas shadowMap>
+      <XR>
+        <Physics
+          gravity={[0, -2, 0]}
+          iterations={20}
+          defaultContactMaterial={{
+          friction: 0.09
+          }}>
+          <Scene />
+        </Physics>
+      </XR>
+    </Canvas>
+  </>
   );
 }
 
