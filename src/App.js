@@ -1,13 +1,13 @@
 import Scene from "./Components/Scene";
 import { createRoot } from 'react-dom/client'
-import React, { useState, useEffect, Fragment } from 'react'
-import { VRCanvas, Hands, VRButton, XR } from '@react-three/xr'
-import { useThree, useFrame, Canvas } from '@react-three/fiber'
-import { Box, OrbitControls, Plane, Sphere, Sky, useMatcapTexture } from '@react-three/drei'
-import { usePlane, useBox, Physics, useSphere } from '@react-three/cannon'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import React, { useState, useEffect, Fragment, useRef } from 'react'
+import { VRCanvas, Hands, VRButton, XR, useController} from '@react-three/xr'
+import { Canvas } from '@react-three/fiber'
+import { Physics } from '@react-three/cannon'
+import ControllerModel from "./Components/ControllerModel";
 
 function App() {
+
   return (
     <>
     <VRButton />
@@ -20,19 +20,9 @@ function App() {
           friction: 0.09
           }}>
           <Scene />
-          
-          {/* Load left hand model */}
-          <GLTFLoader url={process.env.PUBLIC_URL + `my-app4/public/models/left.glb`}>
-              {(gltfLeft) => <primitive object={gltfLeft.scene} />}
-            </GLTFLoader>
-            
-            {/* Load right hand model */}
-            <GLTFLoader url={process.env.PUBLIC_URL + `my-app4/public/models/right.glb`}>
-              {(gltfRight) => <primitive object={gltfRight.scene} />}
-            </GLTFLoader>
-
-          <Hands />
         </Physics>
+        <ControllerModel hand="left" />
+        <ControllerModel hand="right" />
       </XR>
     </Canvas>
   </>
