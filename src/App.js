@@ -22,12 +22,12 @@ function App() {
           <Scene />
           
           {/* Load left hand model */}
-          <GLTFLoader url="C:\Users\ztoew\Desktop\R3F Testing\my-app4\public\models\left.glb">
+          <GLTFLoader url={process.env.PUBLIC_URL + `my-app4/public/models/left.glb`}>
               {(gltfLeft) => <primitive object={gltfLeft.scene} />}
             </GLTFLoader>
             
             {/* Load right hand model */}
-            <GLTFLoader url="C:\Users\ztoew\Desktop\R3F Testing\my-app4\public\models\right.glb">
+            <GLTFLoader url={process.env.PUBLIC_URL + `my-app4/public/models/right.glb`}>
               {(gltfRight) => <primitive object={gltfRight.scene} />}
             </GLTFLoader>
 
