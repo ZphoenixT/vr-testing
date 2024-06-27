@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Controllers, useXR } from '@react-three/xr';
+import { Controllers, useXR, TeleportationPlane } from '@react-three/xr';
 import { useBox } from '@react-three/cannon';
 import { useFrame } from '@react-three/fiber';
 import { Box } from '@react-three/drei';
@@ -56,6 +56,7 @@ function ControllerLogic() {
           return null;
         }}
       />
+      <TeleportationPlane leftHand/>
       {/* Display the collision boxes */}
       <Box ref={leftControllerCollisionRef} args={[0.2, 0.2, 0.2]}>
         <meshBasicMaterial color="red" wireframe />
