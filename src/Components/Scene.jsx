@@ -11,7 +11,7 @@ function Scene() {
     const [floorRef] = usePlane(() => ({
         args: [10, 10],
         rotation: [-Math.PI / 2, 0, 0],
-        position: [0, 0.2, 0],
+        position: [0, 0.5, 0],
         type: 'Static'
     }))
 
