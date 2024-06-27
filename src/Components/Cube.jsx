@@ -2,7 +2,13 @@ import { Box, useMatcapTexture } from '@react-three/drei'
 import { useBox, Physics, useSphere } from '@react-three/cannon'
 
 function Cube({ position, args = [0.06, 0.06, 0.06] }) {
-    const [boxRef] = useBox(() => ({ position, mass: 1, args }))
+    const [boxRef] = useBox(() => ({
+      position,
+      mass: 1,
+      args,
+      type: 'Dynamic'
+    }))
+    
     const [tex] = useMatcapTexture('C7C0AC_2E181B_543B30_6B6270')
 
     return (
