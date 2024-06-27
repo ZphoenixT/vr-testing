@@ -22,6 +22,7 @@ function Cube({ position, args = [0.06, 0.06, 0.06] }) {
           <meshMatcapMaterial attach="material" matcap={tex} color={hovered ? 'hotpink' : 'white'}/>
         </Box>
     </Interactive>
+    // fix?
     )
 }
 
