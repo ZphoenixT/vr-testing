@@ -1,17 +1,18 @@
 import { Box, OrbitControls, Plane, Sphere, Sky, useMatcapTexture } from '@react-three/drei'
 import { usePlane } from '@react-three/cannon'
+import { Interactive, RayGrab } from '@react-three/xr';
 import Cube from './Cube'
 import Ball from './Ball'
 import CylinderObject from './CylinderObject'
 import CapsuleObject from './CapsuleObject'
- {/*  */}
+import ControllerLogic from './ControllerLogic';
 
 function Scene() {
 
     const [floorRef] = usePlane(() => ({
         args: [10, 10],
         rotation: [-Math.PI / 2, 0, 0],
-        position: [0, 0.5, 0],
+        position: [0, 0, 0],
         type: 'Static'
     }))
 
@@ -26,10 +27,7 @@ function Scene() {
         <meshStandardMaterial attach="material" color="#bbbbbb" />
       </Plane>
 
-       {/* this is an array for calling cubes, the firs number is for how many */}
-      {[...Array(10)].map((_, i) => (
-        <Cube key={i} position={[0, 1.1 + 0.1 * i, -0.5]} />
-      ))}
+       
       {/* this is an array for calling balls */}
       {[...Array(10)].map((_, i) => (
         <Ball key={i} position={[1.5, 1.1 + 0.1 * i, -0.5]} />
@@ -51,6 +49,13 @@ function Scene() {
       <ambientLight intensity={0.6} />
        {/* spotlight makes a cone of light the effects only the set radius */}
       <spotLight position={[1, 8, 1]} angle={0.2} penumbra={1} intensity={8} castShadow />
+      <ControllerLogic/>
+      <Interactive>
+      {/* this is an array for calling cubes, the firs number is for how many */}
+      {[...Array(10)].map((_, i) => (
+        <Cube key={i} position={[0, 1.1 + 0.1 * i, -0.5]} />
+      ))}
+      </Interactive>
     </>
   )
 }
